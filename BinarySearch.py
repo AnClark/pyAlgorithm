@@ -28,25 +28,15 @@ def BinarySearch(array, keynumber, LBound, UBound):
         
 
 
-
-
-def GenerateSortedRandomList(num_count):
-    lst = []
-    for i in range(num_count):
-        lst.append(random.randint(1,100))
-    lst.sort()
-    return lst
-    
-
 if __name__ == "__main__":
-    lst = GenerateSortedRandomList(7)
+    lst = [random.randint(1,100) for x in range(1,10)]
 
     print("Current List:" + str(lst))
 
     while True:
         key = int(input("Input a key number:"))
 
-        result = BinarySearch(lst, key, 0, 7-1)
+        result = BinarySearch(lst, key, 0, len(lst)-1)
 
         if result > -1:
             print("Found! At Index %d \n" % result)

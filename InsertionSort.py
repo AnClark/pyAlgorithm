@@ -5,7 +5,7 @@
 http://www.cnblogs.com/kkun/archive/2011/11/23/2260265.html
 """
 
-def InsertSort(array):
+def InsertionSort(array):
 
     for i in range(1, len(array)):
         
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     print("Original array:" + str(arr))
 
-    InsertSort(arr)
+    InsertionSort(arr)
 
     print("Final array:" + str(arr))
 

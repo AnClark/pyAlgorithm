@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 def BubbleSort(array):
-    len = array.__len__()
+    length = array.__len__()
 
-    for i in range(len):
-        for j in range(i, len):
+    for i in range(length):
+        for j in range(i, length):
             if array[i] > array[j]:
                 buff = array[i]
                 array[i] = array[j]

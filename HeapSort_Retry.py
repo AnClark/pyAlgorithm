@@ -34,13 +34,11 @@ def HeapAdjust(array):
         # 注意：限定儿子节点小于右边界，是为了防止出界——多数是右子节点不存在的情况。
         MAX_index = i
 
-        if LChild <= UBound:     
-            if array[LChild] > array[MAX_index]:
-                MAX_index = LChild
+        if LChild <= UBound and array[LChild] > array[MAX_index]:     
+            MAX_index = LChild
                 
-        if RChild <= UBound:
-            if array[RChild] > array[MAX_index]:
-                MAX_index = RChild
+        if RChild <= UBound and array[RChild] > array[MAX_index]:
+            MAX_index = RChild
 
         # 若最大者为儿子节点，则使儿子节点上位。否则此代码实为无效
         buff = array[i]
@@ -72,7 +70,8 @@ def HeapInit(array):
     HeapSort —— 堆排序的入口函数
 ---------------------------------------------------------------
     只需要把待排序的序列传进来，就可以返回一个排好序的序列。
-    在这里，我运用了Python List类型的pop()方法
+    在这里，我运用了Python List类型的pop()方法，
+    将每次排序过程所得出来的最大数弹出列表，这时只需对剩余项目进行排序即可。
 ===============================================================
 """
 def HeapSort(array):
@@ -113,28 +112,24 @@ def HeapSort(array):
 if __name__ == "__main__":
     from random import randint, shuffle
 
-    arr = []
-    
-    for i in range(20):
-        arr.append(randint(1,100))
-
-#    arr = [60,8,30,40,12,70,10]
-#    random.shuffle(arr)
-
-#    arr = [12,8,10]
-
+    # 用列表生成式生成随机测试序列，并打乱顺序
+    arr = [randint(1,100) for x in range(1,20)]
+    shuffle(arr)
+    # 用Python自带的排序方法对序列进行排序，来核对我的算法是否正确
     arr_orig = sorted(arr)
 
+    # 输出原序列
     print("Original array is:" + str(arr))
 
+    # 输出初始化堆
     HeapInit(arr)
-
     print("Initialized array is:" + str(arr))
 
+    # 启动正式的堆排序过程
     result = HeapSort(arr)
-
     print("Sorted array is:" + str(result))
 
+    # 核对答案
     if result == arr_orig:
         print("RIGHT!")
     else:
